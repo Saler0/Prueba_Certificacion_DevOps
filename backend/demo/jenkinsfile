@@ -1,0 +1,14 @@
+pipeline {
+ agent any
+ stages {
+    stage('Checkout from GitHub') {
+            steps {
+                git url: 'https://github.com/Saler0/Prueba_Certificacion_DevOps.git', branch: 'main'
+            }
+        }
+    stage('Build') {
+        bat "mvn clean package"
+    }
+
+}
+}
