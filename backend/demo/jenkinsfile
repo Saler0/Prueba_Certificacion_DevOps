@@ -1,19 +1,20 @@
 pipeline {
- agent any
- stages {
-    stage('Build') {
-        steps {
-        bat "mvn -f backend/demo/pom.xml clean package" // contruccion limpia de la aplicacion
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+            bat "mvn -f backend/demo/pom.xml clean package" // contruccion limpia de la aplicacion
+            }
+        }
+        stage('Test') {
+            steps {
+            bat 'mvn -f backend/demo/pom.xml test' //pruebas funcionales con junit
+            }
+        }
+        stage('Deploy') {
+            steps {
+                bat "docker-compose up --build -d"
+            }
         }
     }
-     stage('Test') {
-        steps {
-        bat 'mvn -f backend/demo/pom.xml test' //pruebas funcionales con junit
-        }
-    }
-    stage('Deploy') {
-        steps {
-            bat "docker-compose up --build -d"
-        }
-}
 }
