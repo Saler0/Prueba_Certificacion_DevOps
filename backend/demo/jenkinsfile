@@ -11,6 +11,9 @@ pipeline {
         bat 'mvn -f backend/demo/pom.xml test' //pruebas funcionales con junit
         }
     }
-
+    stage('Deploy') {
+        steps {
+            bat "docker-compose up --build -d"
+        }
 }
 }
