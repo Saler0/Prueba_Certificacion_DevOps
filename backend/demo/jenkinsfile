@@ -3,7 +3,12 @@ pipeline {
  stages {
     stage('Build') {
         steps {
-        bat "mvn -f backend/demo/pom.xml clean package"
+        bat "mvn -f backend/demo/pom.xml clean package" // contruccion limpia de la aplicacion
+        }
+    }
+     stage('Test') {
+        steps {
+        bat 'mvn test' //pruebas funcionales con junit
         }
     }
 
