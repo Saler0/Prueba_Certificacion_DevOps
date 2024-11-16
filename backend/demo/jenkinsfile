@@ -8,7 +8,7 @@ pipeline {
     }
      stage('Test') {
         steps {
-        bat 'mvn test' //pruebas funcionales con junit
+        bat 'mvn -f backend/demo/pom.xml test' //pruebas funcionales con junit
         }
     }
 
